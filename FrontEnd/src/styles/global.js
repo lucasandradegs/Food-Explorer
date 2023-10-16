@@ -7,6 +7,10 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
 
+    :root {
+        font-size: 62.5%;
+    }
+
     body {
         background-color: ${({theme}) => theme.COLORS.DARK_400};
         color: ${({theme}) => theme.COLORS.LIGHT_300};
@@ -16,7 +20,7 @@ export default createGlobalStyle`
 
     body, input, button {
         font-family: 'Poppins', serif;
-        font-size: 16px;
+        font-size: 1.6rem;
         outline: none;
     }
 
