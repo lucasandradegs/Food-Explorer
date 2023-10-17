@@ -9,12 +9,21 @@ export const Container = styled.div`
     margin: 15.8rem 6.5rem;
 
     .title {
+
         display: flex;
         align-items: center;
         justify-content: center;
         
         gap: 1.1rem;
         margin-bottom: 4.1rem;
+
+        animation: main 1.5s;
+
+        @keyframes main {
+            from {
+                transform: translateY(-100%);
+            }
+        }
 
         h2 {
             font-size: 3.4rem;
@@ -33,9 +42,10 @@ export const Container = styled.div`
     @media (min-width: 1024px) {
         .main {
             display: flex;
-            gap: 30.6rem;
+            gap: 22.6rem;
 
             .title {
+                width: 240px;
                 h2 {
                     font-size: 2.8rem;
                 }
@@ -48,6 +58,14 @@ export const Container = styled.div`
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
+
+    animation: form 1.5s;
+
+        @keyframes form {
+            from {
+                transform: translateX(-50%);
+            }
+        }
     
     input {
         width: 31.6rem;
@@ -64,9 +82,10 @@ export const Form = styled.form`
 
     @media (min-width: 1024px) {
         .form {
-            background-color: ${({theme}) => theme.COLORS.DARK_700};
-            width: 34.8rem;
+            background-color: ${({ theme }) => theme.COLORS.DARK_700};
+            width: 47.6rem;
             border-radius: 1.6rem;
+            padding: 6.4rem;
         }
     }
 `;

@@ -21,7 +21,7 @@ export function SignUp() {
                         <Input placeholder="No mínimo 6 caracteres" />
 
                         <Button title="Criar conta" />
-                        <ButtonText title="Já tenho uma conta" />
+                        <ButtonText className="teste" title="Já tenho uma conta" />
                     </div>
                 </Form>
             </main>
