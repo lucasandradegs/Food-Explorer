@@ -40,4 +40,24 @@ export const Container = styled.div`
 
 
     background-color: ${({theme}) => theme.COLORS.DARK_600};
+
+    @media (min-width: 1024px) {
+        padding: 0 12.4rem;
+
+        h2 {
+            font-weight: 700;
+            font-size: 2.4rem;
+        }
+
+        span {
+            font-size: 1.4rem;
+        }
+
+        .foodexplorer {
+            img {
+                width: 3rem;
+                height: 3rem;
+            }
+        }
+    }
 `;
