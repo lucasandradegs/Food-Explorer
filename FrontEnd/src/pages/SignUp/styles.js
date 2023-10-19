@@ -9,7 +9,6 @@ export const Container = styled.div`
     margin: 15.8rem 6.5rem;
 
     .title {
-
         display: flex;
         align-items: center;
         justify-content: center;
@@ -17,7 +16,7 @@ export const Container = styled.div`
         gap: 1.1rem;
         margin-bottom: 4.1rem;
 
-        animation: main 1.5s;
+        animation: main 2.0s;
 
         @keyframes main {
             from {
@@ -59,6 +58,7 @@ export const Form = styled.form`
     display: flex;
     flex-direction: column;
 
+
     animation: form 1.5s;
 
         @keyframes form {
@@ -67,12 +67,14 @@ export const Form = styled.form`
             }
         }
     
+    
     input {
         width: 31.6rem;
     }
 
     P {
         margin-top: 3.2rem;
+        margin-bottom: 0.8rem;
         color: ${({ theme }) => theme.COLORS.LIGHT_400};
     }
 
@@ -80,7 +82,18 @@ export const Form = styled.form`
         margin-top: 3.2rem;
     }
 
+    h2 {
+        display: none;
+    }
+    
+
     @media (min-width: 1024px) {
+        
+        h2 {
+            display: flex;
+            justify-content: center;
+        }
+
         .form {
             background-color: ${({ theme }) => theme.COLORS.DARK_700};
             width: 47.6rem;

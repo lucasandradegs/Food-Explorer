@@ -11,6 +11,10 @@ export const Container = styled.div`
     gap: 1.4rem;
     padding: 0 1.4rem;
 
+    @media (max-width: 1023px) {
+        display: none;
+    }
+
     > input {
         width: 100%;
         height: 5.6rem;

@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     width: 100%;
-    height: 48px;
+    height: 4.8rem;
 
     border: 0;
-    padding: 0 16px;
-    border-radius: 5px;
+    padding: 0 1.6rem;
+    border-radius: 0.5rem;
 
     font-weight: 100;
     
@@ -15,5 +19,9 @@ export const Container = styled.button`
 
     &:disabled {
         opacity: 0.5;
+    }
+
+    svg {
+        margin-right: 0.8rem;
     }
 `

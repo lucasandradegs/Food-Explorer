@@ -13,6 +13,8 @@ export function SignUp() {
                 </div>
                 <Form>
                     <div className="form">
+                        <h2>Crie sua conta</h2>
+
                         <p>Seu nome</p>
                         <Input placeholder="Exemplo: Maria da Silva" />
                         <p>Email</p>

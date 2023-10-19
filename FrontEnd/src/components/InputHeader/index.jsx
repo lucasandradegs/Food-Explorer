@@ -1,6 +1,6 @@
 import { Container } from "./styles";
 
-export function Input({ icon: Icon, mobile = false, ...rest }) {
+export function InputHeader({ icon: Icon, mobile = false, ...rest }) {
     return (
         <Container>
             {Icon && <Icon size={20} />}
