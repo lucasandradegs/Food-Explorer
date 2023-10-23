@@ -55,6 +55,12 @@ export const Banner = styled.div`
     
     }
 
+    @media (min-width: 1023px) {
+        .bannerMobile {
+            display: none;
+        }
+    }
+
     @media (max-width: 1023px) {
         .bannerDesktop {
             display: none;

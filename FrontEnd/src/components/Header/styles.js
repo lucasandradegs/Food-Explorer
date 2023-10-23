@@ -19,7 +19,7 @@ export const Container = styled.div`
         padding: 0 12.3rem;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1023px) {
         .leftSideDesktop, .middleSideDesktop, .rightSideDesktop  {
             display: none;
         }
