@@ -5,24 +5,18 @@ import { MdKeyboardArrowRight } from 'react-icons/md'
 import { AiOutlineMinus } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
 
-export function Card({ title, price, quantity }) {
+export function Card({ image, title, price }) {
     return (
         <Container>
             <img src="./src/assets/saladaravanello.svg" alt="" />
-            <p><AiOutlineHeart size={32} /></p>
-            <div className="cardHeader">
-                <div className="title">
-                    {title}
-                    <span><MdKeyboardArrowRight /></span>
+            <h4>{title}{' >'}</h4>
+            <span>R$ {price}</span>
+            <div className="QuantitySection">
+                <div className="MinusAndPlusButton">
+                    <AiOutlineMinus size={24}/>
+                    <h4>01</h4>
+                    <AiOutlinePlus size={24}/>
                 </div>
-            </div>
-            <div className="middlePrice">
-                {price}
-            </div>
-            <div className="cardFooter">
-                <span><AiOutlineMinus size={24} /></span>
-                {quantity}
-                <span><AiOutlinePlus size={24} /></span>
                 <Button title="incluir" />
             </div>
         </Container>

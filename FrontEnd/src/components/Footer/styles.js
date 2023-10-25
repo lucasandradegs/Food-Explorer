@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    grid-area: footer;
+    grid-area: "footer";
 
     width: 100%;
     height: 7.7rem;
     position: absolute;
     bottom: 0;
-    left: 0;
+
 
     padding: 0 2.8rem;
 
@@ -15,7 +15,8 @@ export const Container = styled.div`
     align-items: center;
     gap: 0.8rem;
     justify-content: space-between;
-    
+
+
     span {
         font-size: 1rem;
     }

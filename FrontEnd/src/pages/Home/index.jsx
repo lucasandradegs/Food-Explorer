@@ -25,9 +25,23 @@ export function Home() {
                 </div>
             </Banner>
             <Section title="Refeições">
-                <Card title="Salada Ravanello" price="R$ 49,97" quantity="01"/>
-                <Card title="Salada Ravanello" price="R$ 49,97" quantity="01"/>
-
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+            </Section>
+            <Section title="Pratos principais">
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+            </Section>
+            <Section title="Pratos principais">
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" quantity="01" />
             </Section>
             <Footer />
         </Container>
