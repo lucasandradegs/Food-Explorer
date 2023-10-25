@@ -17,10 +17,26 @@ export const Container = styled.div`
         overflow-x: auto;
         scroll-behavior: smooth;
 
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        .cardSection::-webkit-scrollbar {
+    display: none;
+    }
+
     }
 
     .Card {
         display: flex;
         gap: 1.6rem;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 0;
+
+        h2 {
+            font-size: 3.2rem;
+            font-weight: 400;
+        }
     }
 `;

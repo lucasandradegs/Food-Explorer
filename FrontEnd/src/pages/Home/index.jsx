@@ -20,10 +20,15 @@ export function Home() {
                 <img className="bannerDesktop" src="./src/assets/banner.svg" alt="" />
 
                 <div className="main">
+                    <div className="Letters">
+
                     <h2>Sabores inigualáveis</h2>
-                    <p>Sinta o cuidado do preparo com <br /> ingredientes selecionados.</p>
+                    <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+                    </div>
                 </div>
             </Banner>
+            <div className="SectionCards">
+
             <Section title="Refeições">
                 <Card title="Salada Ravanello" price="49,97" quantity="01" />
                 <Card title="Salada Ravanello" price="49,97" quantity="01" />
@@ -43,6 +48,7 @@ export function Home() {
                 <Card title="Salada Ravanello" price="49,97" quantity="01" />
                 <Card title="Salada Ravanello" price="49,97" quantity="01" />
             </Section>
+            </div>
             <Footer />
         </Container>
 

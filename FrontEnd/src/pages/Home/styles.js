@@ -7,6 +7,22 @@ export const Container = styled.div`
     min-height: 100vh;
     position: relative;
 
+    .SectionCards {
+        /* overflow-x: auto;
+        scroll-behavior: smooth;
+
+        -ms-overflow-style: none;
+        scrollbar-width: none; */
+
+        ::-webkit-scrollbar {
+        display: none;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 0 11.2rem;
+    }
+}
+
 `
 
 export const Banner = styled.div`
@@ -43,6 +59,81 @@ export const Banner = styled.div`
         background: rgb(9,30,38);
         background: linear-gradient(#091E26, #00131C);
     
+
+        .Letters {
+            display: flex;
+            margin-top: 3.6rem;
+            align-items: flex-end;
+            flex-direction: column;
+            width: 215px;
+            height: 62px;
+
+            p {
+                margin-top: 2rem;
+                margin-left: 9.2rem;
+            }
+
+            @media (min-width: 320px) {
+
+                h2 {
+                    font-size: 1rem;
+                }
+                p {
+                    margin-top: 1.6rem;
+                    font-size: 0.8rem;
+                }
+            }
+
+            @media (min-width: 375px) {
+                margin-top: 1.4rem;
+
+                h2 {
+                    font-size: 1.5rem;
+                }
+
+                p {
+                    margin-left: 4rem;
+                    font-size: 1rem;
+                }
+            }
+
+            @media (min-width: 768px) {
+                width: 100%;
+                height: 8rem;
+
+                h2 {
+                    font-size: 2rem;
+                    margin-right: 13rem;
+                }
+                
+                p {
+                    font-size: 1.1rem;
+                    margin-right: 1rem;
+                }
+            }
+
+            @media (min-width: 1024px) {
+                width: 42.2rem;
+                height: 8rem;
+                margin-bottom: 5rem;
+            }
+
+            @media (min-width: 1440px) {
+                width: 100%;
+
+                h2 {
+                    font-size: 4rem;
+                    margin-right: 10rem;
+                }
+
+                p {
+                    font-size: 1.6rem;
+                    margin-right: 3.4rem;
+                }
+            }
+
+        }
+
         h2 {
             font-size: 1.8rem;
             margin-right: 2rem;
@@ -52,47 +143,26 @@ export const Banner = styled.div`
             font-size: 1.2rem;
             margin-right: 1.1rem;
         }
-
-        @media (max-width: 374px) {
-            h2 {
-                margin-top: 3rem;
-                font-size: 1rem;
-            }
-
-            p {
-                font-size: 0.7rem;
-                margin-top: 2rem;
-            }
-        }
-
-        @media (min-width: 375px) {
-            h2 {
-                font-size: 1.33rem;
-            }
-
-            p {
-
-                font-size: 0.9rem;
-            }
-        }
         
-        @media (min-width: 425px) {
-            h2 {
-            font-size: 1.8rem;
-            margin-right: 2rem;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-right: 1.1rem;
-        }
-        }
-    
     }
 
-    @media (min-width: 1023px) {
+    @media (min-width: 1024px) {
         .bannerMobile {
             display: none;
+        }
+
+        height: 26.0rem;
+        margin-top: 16.4rem;
+        padding: 0 12.4rem;
+
+        img {
+            position: absolute;
+            
+            width: 63.2rem;
+            height: 40.6rem;
+            
+            top: 13.2rem;
+            left: 7rem;
         }
     }
 
