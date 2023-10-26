@@ -30,6 +30,10 @@ export const Container = styled.div`
 export const Left = styled.div`
     margin-top: 0.8rem;
 
+    a {
+        color: ${({theme}) => theme.COLORS.LIGHT_300};
+    }
+
     @media (min-width: 1024px) {
 
         .leftSideDesktop {

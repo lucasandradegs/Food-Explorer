@@ -21,7 +21,8 @@ export const Container = styled.div`
         scrollbar-width: none;
 
         .cardSection::-webkit-scrollbar {
-    display: none;
+        display: none;
+
     }
 
     }
@@ -29,6 +30,8 @@ export const Container = styled.div`
     .Card {
         display: flex;
         gap: 1.6rem;
+
+
     }
 
     @media (min-width: 1024px) {

@@ -30,23 +30,23 @@ export function Home() {
             <div className="SectionCards">
 
             <Section title="Refeições">
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" description="Rabanetes, folhas verdes e molho agridoce salpicadas com gergelim"/>
+                <Card title="Salada Ravanello" price="49,97" description="Massa fresca com camarões e pesto. "/>
+                <Card title="Salada Ravanello" price="49,97" description="Presunto de parma e rúcula em um pão com fermentação natural."/>
+                <Card title="Salada Ravanello" price="49,97" />
+                <Card title="Salada Ravanello" price="49,97" />
+                <Card title="Salada Ravanello" price="49,97" />
+                <Card title="Salada Ravanello" price="49,97" />
             </Section>
             <Section title="Pratos principais">
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" />
+                <Card title="Salada Ravanello" price="49,97" />
+                <Card title="Salada Ravanello" price="49,97" />
             </Section>
             <Section title="Pratos principais">
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
-                <Card title="Salada Ravanello" price="49,97" quantity="01" />
+                <Card title="Salada Ravanello" price="49,97" />
+                <Card title="Salada Ravanello" price="49,97" />
+                <Card title="Salada Ravanello" price="49,97" />
             </Section>
             </div>
             <Footer />

@@ -1,4 +1,6 @@
 import { Container } from "./styles";
+import { PiCaretLeftBold } from "react-icons/pi";
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 export function Section({ title, children }) {
     return (

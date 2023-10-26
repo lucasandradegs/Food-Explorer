@@ -16,6 +16,10 @@ export const Container = styled.div`
 
         ::-webkit-scrollbar {
         display: none;
+
+        :nth-child(4) {
+            background-color: white;
+        }
     }
 
     @media (min-width: 1024px) {

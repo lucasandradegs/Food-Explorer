@@ -3,13 +3,15 @@ import { Container, Left, Middle, Right } from "./styles";
 import { PiReceipt } from 'react-icons/pi'
 import { GoSignOut } from 'react-icons/go'
 import { FiMenu } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 export function Header({ children }) {
     return (
         <Container>
             <Left>
-
-                <span><FiMenu size={24} /></span>
+                <Link to="/menu">
+                    <span><FiMenu size={24} /></span>
+                </Link>
 
                 <div className="leftSideDesktop">
                     <img src="/src/assets/explorer.svg" alt="" />

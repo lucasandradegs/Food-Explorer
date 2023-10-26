@@ -5,6 +5,10 @@ export const Container = styled.div`
     .Content {
         padding: 0 5.3rem;
 
+        @media (min-width:1024px) {
+            padding: 0 12rem;
+        }
+
         button:nth-child(1) {
             display: flex;
             justify-content: flex-start;
@@ -42,6 +46,28 @@ export const Container = styled.div`
         p {
             margin-top: 2.4rem;
         }
+
+        @media (min-width: 1024px) {
+            display: flex;
+            flex-direction: row;
+            gap: 4.2rem;
+
+            img {
+                margin-top: 4.2rem;
+                width: 39.1rem;
+                height: 38.9rem;
+            }
+
+            h2 {
+                font-size: 4rem;
+            }
+
+            p {
+                font-size: 2.4rem;
+            }
+        }
+
+        
     }
 
     .IngredientsSection {
@@ -68,6 +94,7 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         margin-top: 4.8rem;
+        justify-content: center;
         
         gap: 1.6rem;
         
@@ -85,5 +112,23 @@ export const Container = styled.div`
             }
 
         }
+    }
+
+    @media (min-width: 1024px) {
+        .TileDesktop {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+
+            .Ingredients {
+                justify-content: start;
+            }
+
+            .Details {
+                justify-content: start;
+            }
+        }
+
+        
     }
 `;
