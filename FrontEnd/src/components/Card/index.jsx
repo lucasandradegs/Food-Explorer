@@ -6,16 +6,21 @@ import { AiOutlineMinus } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from "react-router-dom";
+import { api } from "../../services/api";
+import { useAuth } from "../../hooks/auth";
 
-export function Card({ image, title, description, price }) {
+export function Card({ data, ...rest }) {
+    const imageURL = `${api.defaults.baseURL}/files/${data.image}`
+    const { user } = useAuth()
+
     return (
-        <Container>
-            <img src="./src/assets/saladaravanello.svg" alt="" />
+        <Container {...rest}>
+            <img src={imageURL} alt="" />
             <Link to="/details/1">
-                <h4>{title}{' >'}</h4>
+                <h4>{data.name}{' >'}</h4>
             </Link>
-            <h5>{description}</h5>
-            <span>R$ {price}</span>
+            <h5>{data.description}</h5>
+            <span>R$ {data.price}</span>
             <div className="QuantitySection">
                 <div className="MinusAndPlusButton">
                     <AiOutlineMinus size={24} cursor="pointer" />

@@ -1,33 +1,27 @@
 const knex = require("../database/knex")
-const AppError = require("../utils/AppError")
+const DiskStorage = require("../providers/DiskStorage")
+const AppError = require("../utils/AppError");
 
 class PlatesController {
     async create(req, res) {
         const { name, category, ingredients, price, description } = req.body
-        const user_id  = req.user.id
+        const imageFilename = req.file.filename
+
+        const diskStorage = new DiskStorage()
+        const filename = await diskStorage.saveFile(imageFilename)
 
         const [plate_id] = await knex("plates").insert({
+            image: filename,
             name,
             price,
+            category,
             description,
-            user_id
         })
-
-        const insertIntoCategory = category.map(name => {
-            return {
-                plate_id,
-                category: name,
-                user_id
-            }
-        })
-
-        await knex("category").insert(insertIntoCategory)
 
         const insertIntoIngredients = ingredients.map(ingredient => {
             return {
-                plate_id,
                 ingredient,
-                user_id
+                plate_id
             }
         })
 

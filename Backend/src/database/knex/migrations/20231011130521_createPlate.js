@@ -4,9 +4,10 @@ exports.up = knex => knex.schema.createTable("plates", table => {
     table.text("name").notNullable();
     table.integer("price").notNullable();
     table.text("description").notNullable();
-    table.integer("user_id").references("id").inTable("users")
-    table.timestamp("created_at").default(knex.fn.now())
-    table.timestamp("updated_at").default(knex.fn.now())
+    table.text("category").notNullable();
+
+    table.timestamp("created_at").default(knex.fn.now());
+    table.timestamp("updated_at").default(knex.fn.now());
 }) 
   
 

@@ -8,7 +8,22 @@ import { Section } from "../../components/Section"
 import { Card } from "../../components/Card"
 import { MdKeyboardArrowRight } from 'react-icons/md'
 
+import { api } from "../../services/api"
+import { useState, useEffect } from "react"
+
 export function Home() {
+    const [plates, setPlates] = useState([])
+    const [search, setSearch] = useState("")
+
+    useEffect(() => {
+        async function fetchPlates() {
+            const response = await api.get(`/plates?name=${search}`);
+            setPlates(response.data);
+        }
+
+        fetchPlates();
+    }, [search])
+
     return (
         <Container>
             <Header >
@@ -16,41 +31,50 @@ export function Home() {
             </ Header>
             <main>
 
-            <Banner>
+                <Banner>
 
-                <img className="bannerMobile" src="./src/assets/bannerMobile.svg" alt="" />
-                <img className="bannerDesktop" src="./src/assets/banner.svg" alt="" />
+                    <img className="bannerMobile" src="./src/assets/bannerMobile.svg" alt="" />
+                    <img className="bannerDesktop" src="./src/assets/banner.svg" alt="" />
 
-                <div className="main">
-                    <div className="Letters">
+                    <div className="main">
+                        <div className="Letters">
 
-                    <h2>Sabores inigualáveis</h2>
-                    <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+                            <h2>Sabores inigualáveis</h2>
+                            <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+                        </div>
                     </div>
-                </div>
-            </Banner>
-            <div className="SectionCards">
+                </Banner>
+                <div className="SectionCards">
 
-            <Section title="Refeições">
-                <Card title="Salada Ravanello" price="49,97" description="Rabanetes, folhas verdes e molho agridoce salpicadas com gergelim"/>
-                <Card title="Salada Ravanello" price="49,97" description="Massa fresca com camarões e pesto. "/>
-                <Card title="Salada Ravanello" price="49,97" description="Presunto de parma e rúcula em um pão com fermentação natural."/>
-                <Card title="Salada Ravanello" price="49,97" />
-                <Card title="Salada Ravanello" price="49,97" />
-                <Card title="Salada Ravanello" price="49,97" />
-                <Card title="Salada Ravanello" price="49,97" />
-            </Section>
-            <Section title="Pratos principais">
-                <Card title="Salada Ravanello" price="49,97" />
-                <Card title="Salada Ravanello" price="49,97" />
-                <Card title="Salada Ravanello" price="49,97" />
-            </Section>
-            <Section title="Pratos principais">
-                <Card title="Salada Ravanello" price="49,97" />
-                <Card title="Salada Ravanello" price="49,97" />
-                <Card title="Salada Ravanello" price="49,97" />
-            </Section>
-            </div>
+                    {
+                        plates.filter(plate => plate.category == "teste").length > 0 &&
+                        <Section title="Pratos Principais">
+                            {
+                                plates.filter(plate => plate.category == "teste").map(plate => (
+                                    <Card
+                                        key={String(plate.id)}
+                                        data={plate}
+                                    />
+                                ))
+                            }
+                        </Section>
+                    }
+
+                    {
+                        plates.filter(plate => plate.category == "Refeição").length > 0 &&
+                        <Section title="Pratos">
+                            {
+                                plates.filter(plate => plate.category == "Refeição").map(plate => (
+                                    <Card
+                                        key={String(plate.id)}
+                                        data={plate}
+                                    />
+                                ))
+                            }
+                        </Section>
+                    }
+
+                </div>
             </main>
             <Footer />
         </Container>

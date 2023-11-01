@@ -16,7 +16,7 @@ const upload = multer(uploadConfig.MULTER)
 platesRoutes.use(ensureAuthenticated)
 
 
-platesRoutes.post("/", verifyUserAuthorization("admin"), platesController.create)
+platesRoutes.post("/", verifyUserAuthorization("admin"), upload.single("image"), platesController.create)
 platesRoutes.put("/:id", verifyUserAuthorization("admin"), platesController.update)
 platesRoutes.get("/:id", platesController.show)
 platesRoutes.delete("/:id", verifyUserAuthorization("admin"), platesController.delete)
