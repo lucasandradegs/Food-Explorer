@@ -3,11 +3,10 @@ const AppError = require("../utils/AppError")
 
 class PlatesController {
     async create(req, res) {
-        const { image, name, category, ingredients, price, description } = req.body
+        const { name, category, ingredients, price, description } = req.body
         const user_id  = req.user.id
 
         const [plate_id] = await knex("plates").insert({
-            image,
             name,
             price,
             description,

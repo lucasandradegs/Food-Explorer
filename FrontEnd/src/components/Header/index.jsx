@@ -4,8 +4,11 @@ import { PiReceipt } from 'react-icons/pi'
 import { GoSignOut } from 'react-icons/go'
 import { FiMenu } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
 export function Header({ children }) {
+    const { signOut } = useAuth()
+
     return (
         <Container>
             <Left>
@@ -42,7 +45,7 @@ export function Header({ children }) {
 
                 <div className="rightSideDesktop">
                     <Button icon={PiReceipt} title="Pedidos (0)" />
-                    <span><GoSignOut size={22} /></span>
+                    <span><GoSignOut size={22} onClick={signOut}/></span>
                 </div>
             </Right>
 

@@ -14,6 +14,8 @@ export function Home() {
             <Header >
                 <InputHeader icon={FiSearch} placeholder="Busque por pratos ou ingredientes" />
             </ Header>
+            <main>
+
             <Banner>
 
                 <img className="bannerMobile" src="./src/assets/bannerMobile.svg" alt="" />
@@ -49,6 +51,7 @@ export function Home() {
                 <Card title="Salada Ravanello" price="49,97" />
             </Section>
             </div>
+            </main>
             <Footer />
         </Container>
 

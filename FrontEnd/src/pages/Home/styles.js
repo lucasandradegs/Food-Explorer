@@ -7,13 +7,20 @@ export const Container = styled.div`
     min-height: 100vh;
     position: relative;
 
+    display: grid;
+    grid-template-rows: 105px auto;
+    grid-template-areas: 
+    "header"
+    "content"
+    "footer";
+
+    > main {
+        grid-area: content;
+        overflow-y: auto;
+    }
+
+
     .SectionCards {
-        /* overflow-x: auto;
-        scroll-behavior: smooth;
-
-        -ms-overflow-style: none;
-        scrollbar-width: none; */
-
         ::-webkit-scrollbar {
         display: none;
 
@@ -31,6 +38,7 @@ export const Container = styled.div`
 
 export const Banner = styled.div`
     display: flex;
+
 
     padding: 0 3.2rem;
 

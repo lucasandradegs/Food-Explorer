@@ -3,27 +3,19 @@ import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme.js'
 import GlobalStyles from './styles/global.js'
-import { SignIn } from './pages/SignIn'
-import { SignUp } from './pages/SignUp/index.jsx'
-import { Home } from './pages/Home/index.jsx'
-import { DeviceMenu } from './pages/DeviceMenu/index.jsx'
-import { Details } from './pages/Details/index.jsx'
 import { Routes } from './routes/index.jsx'
+import { AuthProvider } from './hooks/auth.jsx'
 
-import { register } from 'swiper/element/bundle'
-
-register()
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/scrollbar'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
+      <AuthProvider>
         <Routes />
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,
 )
