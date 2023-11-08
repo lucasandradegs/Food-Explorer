@@ -1,6 +1,6 @@
 import { Header } from "../../components/Header"
 import { Input } from "../../components/Input"
-import { Container, Banner } from "./styles"
+import { Container, Content } from "./styles"
 import { FiSearch } from 'react-icons/fi'
 import { InputHeader } from "../../components/InputHeader"
 import { Footer } from "../../components/Footer"
@@ -29,22 +29,38 @@ export function Home() {
             <Header >
                 <InputHeader icon={FiSearch} placeholder="Busque por pratos ou ingredientes" />
             </ Header>
+
             <main>
+                <Content>
+                    <section className="BannerImg">
+                        <img className="bannerMobile" src="./src/assets/bannerMobile.svg" alt="" />
+                        <img className="bannerDesktop" src="./src/assets/banner.svg" alt="" />
 
-                <Banner>
-
-                    <img className="bannerMobile" src="./src/assets/bannerMobile.svg" alt="" />
-                    <img className="bannerDesktop" src="./src/assets/banner.svg" alt="" />
-
-                    <div className="main">
-                        <div className="Letters">
-
-                            <h2>Sabores inigualáveis</h2>
-                            <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+                        <div className="mobileTitle">
+                            <h2>Food-Explorer</h2>
                         </div>
-                    </div>
-                </Banner>
-                <div className="SectionCards">
+
+                        <div className="desktopTitle">
+                            <div>
+                                <h2>Sabores inigualáveis</h2>
+                                <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    {
+                        plates.filter(plate => plate.category == "teste").length > 0 &&
+                        <Section title="Refeições">
+                            {
+                                plates.filter(plate => plate.category == "teste").map(plate => (
+                                    <Card
+                                        key={String(plate.id)}
+                                        data={plate}
+                                    />
+                                ))
+                            }
+                        </Section>
+                    }
 
                     {
                         plates.filter(plate => plate.category == "teste").length > 0 &&
@@ -61,10 +77,10 @@ export function Home() {
                     }
 
                     {
-                        plates.filter(plate => plate.category == "Refeição").length > 0 &&
-                        <Section title="Pratos">
+                        plates.filter(plate => plate.category == "teste").length > 0 &&
+                        <Section title="Pratos Principais">
                             {
-                                plates.filter(plate => plate.category == "Refeição").map(plate => (
+                                plates.filter(plate => plate.category == "teste").map(plate => (
                                     <Card
                                         key={String(plate.id)}
                                         data={plate}
@@ -73,9 +89,11 @@ export function Home() {
                             }
                         </Section>
                     }
+                </Content>
 
-                </div>
+
             </main>
+
             <Footer />
         </Container>
 

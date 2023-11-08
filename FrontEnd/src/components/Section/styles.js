@@ -1,45 +1,68 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
 
-    width: 100%;
-
-    padding: 0 2.4rem;
-
     h2 {
-        font-size: 1.8rem;
-    }
-
-    .CardSection {
-        display: flex;
-        overflow-x: auto;
-        scroll-behavior: smooth;
-
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-
-        .cardSection::-webkit-scrollbar {
-        display: none;
-
-    }
-
-    }
-
-    .Card {
-        display: flex;
-        gap: 1.6rem;
-
-
+        font-weight: 500;
     }
 
     @media (min-width: 1024px) {
-        padding: 0;
+        margin-bottom: 3rem;
 
         h2 {
             font-size: 3.2rem;
-            font-weight: 400;
         }
+    }
+
+`;
+
+
+
+export const Slider = styled.div`
+    max-width: 100%;
+    height: 100%;
+
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    > div {
+        display: flex;
+        gap: 2.7rem;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    
+    @media (max-width: 1023px) {
+        > button {
+            display: none;
+        }
+    }
+
+    @media (min-width: 1024px) {
+    > button {
+        border: 0;
+        position: relative;
+
+        background: linear-gradient(270deg, rgba(0, 10, 15, 0.272541) 10%, #000A0F 100%);
+        svg {
+            color: white;
+        }
+    }
+
+    @media (max-width: 768px){
+    width: 100%;
+    /* max-width: 66.8rem; */
+
+    > div {
+    display: flex;
+    gap: 1rem;
+    }
+  }
     }
 `;

@@ -16,7 +16,7 @@ export function Card({ data, ...rest }) {
     return (
         <Container {...rest}>
             <img src={imageURL} alt="" />
-            <Link to="/details/1">
+            <Link to={`/details/${data.id}`}>
                 <h4>{data.name}{' >'}</h4>
             </Link>
             <h5>{data.description}</h5>

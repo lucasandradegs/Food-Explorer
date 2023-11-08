@@ -112,6 +112,27 @@ export const Container = styled.div`
             }
 
         }
+
+        @media (max-width: 1023px) {
+            .desktopButton  {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            
+            button {
+                margin-left: 1.7rem;
+                width: 16.2rem;
+                height: 4.8rem;
+
+                font-size: 1.4rem;
+            }
+
+            .mobileButton {
+                display: none;
+            }
+        }
     }
 
     @media (min-width: 1024px) {

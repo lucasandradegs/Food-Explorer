@@ -1,14 +1,14 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    background: ${({theme}) => theme.COLORS.DARK_400};
+    background: ${({ theme }) => theme.COLORS.DARK_400};
 
     width: 100%;
     min-height: 100vh;
     position: relative;
 
     display: grid;
-    grid-template-rows: 105px auto;
+    grid-template-rows: 10.5rem auto 7.7rem;
     grid-template-areas: 
     "header"
     "content"
@@ -19,164 +19,12 @@ export const Container = styled.div`
         overflow-y: auto;
     }
 
-
-    .SectionCards {
-        ::-webkit-scrollbar {
-        display: none;
-
-        :nth-child(4) {
-            background-color: white;
-        }
-    }
-
-    @media (min-width: 1024px) {
-        padding: 0 11.2rem;
-    }
-}
-
 `
 
-export const Banner = styled.div`
-    display: flex;
-
-
-    padding: 0 3.2rem;
-
+export const Content = styled.main`
+    padding: 0 2.4rem;
     margin-top: 4.4rem;
-    margin-bottom: 6.2rem;
 
-    width: 100%;
-    height: 12rem;
-    
-    
-    img {
-        position: absolute;
-        left: 2px;
-        top: 129px;
-        width: 19rem;
-        height: 15rem;
-    }
-
-    .main {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: flex-end;
-        
-
-        width: 100%;
-
-        border-radius: 0.8rem;
-
-        background: rgb(9,30,38);
-        background: linear-gradient(#091E26, #00131C);
-    
-
-        .Letters {
-            display: flex;
-            margin-top: 3.6rem;
-            align-items: flex-end;
-            flex-direction: column;
-            width: 215px;
-            height: 62px;
-
-            p {
-                margin-top: 2rem;
-                margin-left: 9.2rem;
-            }
-
-            @media (min-width: 320px) {
-
-                h2 {
-                    font-size: 1rem;
-                }
-                p {
-                    margin-top: 1.6rem;
-                    font-size: 0.8rem;
-                }
-            }
-
-            @media (min-width: 375px) {
-                margin-top: 1.4rem;
-
-                h2 {
-                    font-size: 1.5rem;
-                }
-
-                p {
-                    margin-left: 4rem;
-                    font-size: 1rem;
-                }
-            }
-
-            @media (min-width: 768px) {
-                width: 100%;
-                height: 8rem;
-
-                h2 {
-                    font-size: 2rem;
-                    margin-right: 13rem;
-                }
-                
-                p {
-                    font-size: 1.1rem;
-                    margin-right: 1rem;
-                }
-            }
-
-            @media (min-width: 1024px) {
-                width: 42.2rem;
-                height: 8rem;
-                margin-bottom: 5rem;
-            }
-
-            @media (min-width: 1440px) {
-                width: 100%;
-
-                h2 {
-                    font-size: 4rem;
-                    margin-right: 10rem;
-                }
-
-                p {
-                    font-size: 1.6rem;
-                    margin-right: 3.4rem;
-                }
-            }
-
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-right: 2rem;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-right: 1.1rem;
-        }
-        
-    }
-
-    @media (min-width: 1024px) {
-        .bannerMobile {
-            display: none;
-        }
-
-        height: 26.0rem;
-        margin-top: 16.4rem;
-        padding: 0 12.4rem;
-
-        img {
-            position: absolute;
-            
-            width: 63.2rem;
-            height: 40.6rem;
-            
-            top: 13.2rem;
-            left: 7rem;
-        }
-    }
 
     @media (max-width: 1023px) {
         .bannerDesktop {
@@ -184,4 +32,135 @@ export const Banner = styled.div`
         }
     }
 
+    .BannerImg {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 6.2rem;
+        height: 12rem;
+
+        border-radius: 0.8rem;
+
+
+        background: linear-gradient(180deg, #091E26 0%, #00131C 100%);
+
+        img {
+            position: absolute;
+            width: 19.1rem;
+            height: 14.9rem;
+            top: 12.03rem;
+            left: 0.1rem;
+        }
+
+        .mobileTitle {
+            display: flex;
+            justify-content: end;
+            margin-right: 30px;
+            margin-top: 40px;
+
+            h2 {
+                font-weight: 500;
+            }
+
+            @media (max-width: 424px) {
+                display: none;
+            }
+
+            @media (min-width: 768px) {
+                display: none;
+            }
+        }
+
+        .desktopTitle {
+            div {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                margin-right: 30px;
+                margin-top: 22px;
+
+                h2 {
+                    font-size: 3rem;
+                    font-weight: 500;
+                }
+
+                @media (max-width: 767px) {
+                    display: none;
+                }
+            }
+        }
+    
+    
+        @media (min-width: 1024px) {
+            height: 26rem;
+        }
+    }
+
+    @media (min-width: 1024px) and (max-width: 1439px) {
+        padding: 0 11.2rem;
+
+
+        .BannerImg {
+
+            margin-top: 16.4rem;
+            
+            img {
+                position: absolute;
+                width: 65.6rem;
+                height: 41.2rem;
+                top: 11.7rem;
+                left: 20%;
+            }
+
+            .desktopTitle {
+                display: none;
+            }
+
+        }
+        
+
+        .bannerMobile {
+            display: none;
+        }
+    }
+
+    @media (min-width: 1440px) {
+        padding: 0 11.2rem;
+
+
+        .BannerImg {
+
+            .desktopTitle {
+                div {
+
+                    margin-right: 10rem;
+                    margin-top: 8rem;
+
+                    h2 {
+                        letter-spacing: 3px;
+                        font-size: 4rem;
+                    }
+                    
+                    span {
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+            
+            margin-top: 16.4rem;
+            
+            img {
+                position: absolute;
+                width: 65.6rem;
+                height: 41.2rem;
+                top: 11.7rem;
+                left: 4.2rem;
+            }
+
+        }
+
+
+        .bannerMobile {
+            display: none;
+        }
+    }
 `;

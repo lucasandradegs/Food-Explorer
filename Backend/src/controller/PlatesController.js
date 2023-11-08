@@ -54,7 +54,6 @@ class PlatesController {
         const { id } = req.params
 
         const plate = await knex("plates").where({ id }).first()
-        const category = await knex("category").where({ plate_id: id })
         const ingredients = await knex("ingredients").where({ plate_id: id }).orderBy("ingredient")
 
         if (!plate) {
@@ -63,7 +62,6 @@ class PlatesController {
 
         return res.status(201).json({
             ...plate,
-            category,
             ingredients
         })
     }

@@ -9,7 +9,7 @@ export const Container = styled.header`
 
     padding: 5.6rem 2.8rem 2.4rem 2.8rem;
 
-    height: 11.4rem;
+    height: 10.4rem;
     width: 100%;
 
 

@@ -7,41 +7,73 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Button } from "../../components/Button";
 import { PiReceipt } from 'react-icons/pi'
 import { Footer } from "../../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { FiSearch } from "react-icons/fi";
+import { InputHeader } from "../../components/InputHeader";
+import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
+import { useEffect, useState } from "react";
 
 
-export function Details({ image, title, description, ingredients }) {
+export function Details({ ingredients }) {
+    const [data, setData] = useState(null)
+
+    const params = useParams()
+    const { user } = useAuth()
+
+    const imageURL = data && `${api.defaults.baseURL}/files/${data.image}`
+
+
+    useEffect(() => {
+        async function fetchPlates() {
+            const response = await api.get(`/plates/${params.id}`)
+            setData(response.data)
+        }
+
+        fetchPlates()
+    }, [])
+
+
+
     return (
         <Container>
-            <Header />
-            <div className="Content">
-                <Link to="/">
-                    <ButtonText icon={PiCaretLeftBold} title="voltar" />
-                </Link>
-                <div className="TitleSection">
-                    <img src="./src/assets/saladaravanello.svg" alt="" />
-                    <div className="TileDesktop">
-                        <h2>Salada Ravanello</h2>
-                        <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.</p>
-                        <div className="IngredientsSection">
-                            <div className="Ingredients">
-                                <span>alface</span>
-                                <span>cebola</span>
-                                <span>pão naan</span>
-                                <span>pepino</span>
-                                <span>rabanete</span>
-                                <span>tomate</span>
+            <Header >
+                <InputHeader icon={FiSearch} placeholder="Busque por pratos ou ingredientes" />
+            </ Header>
+            {
+                data &&
+                <div className="Content">
+                    <Link to="/">
+                        <ButtonText icon={PiCaretLeftBold} title="voltar" />
+                    </Link>
+                    <div className="TitleSection">
+                        <img src={imageURL} alt="" />
+                        <div className="TileDesktop">
+                            <h2>{data.name}</h2>
+                            <p>{data.description}</p>
+                            <div className="IngredientsSection">
+                                <div className="Ingredients">
+                                    {
+                                        data.ingredients.map(title => (
+                                            <span
+                                                key={String(title.id)}
+                                                ingredient={title.ingredient}
+                                            >{title.ingredient}</span>
+                                        ))
+                                    }
+                                </div>
                             </div>
-                        </div>
-                        <div className="Details">
-                            <AiOutlineMinus size={24} />
-                            <h4>01</h4>
-                            <AiOutlinePlus size={24} />
-                            <Button icon={PiReceipt} title="pedir ∙ R$ 25,00" />
+                            <div className="Details">
+                                <AiOutlineMinus size={24} />
+                                <h4>01</h4>
+                                <AiOutlinePlus size={24} />
+                                <Button className="mobileButton" icon={PiReceipt} title="pedir ∙ R$ 25,00" />
+                                <Button className="desktopButton" title="incluir ∙ "/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
             <Footer />
         </Container>
     )
