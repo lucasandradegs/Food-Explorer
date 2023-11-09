@@ -8,7 +8,6 @@ export const Container = styled.div`
         h2 {
             padding-bottom: 1rem;
             margin-top: 3.6rem;
-
             font-size: 24px;
             font-weight: 300;
 
@@ -17,6 +16,9 @@ export const Container = styled.div`
             border-bottom-color: ${({ theme }) => theme.COLORS.DARK_1000};
         }
 
+        h2:nth-child(3) {
+            margin-top: 1rem;
+        }
     }
 
 `;

@@ -1,6 +1,6 @@
 import { ButtonText } from "../../components/ButtonText";
 import { Header } from "../../components/Header";
-import { Container } from "./styles";
+import { Container, Content } from "./styles";
 import { PiCaretLeftBold } from "react-icons/pi";
 import { AiOutlineMinus } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -42,7 +42,8 @@ export function Details({ ingredients }) {
             </ Header>
             {
                 data &&
-                <div className="Content">
+                <Content>
+
                     <Link to="/">
                         <ButtonText icon={PiCaretLeftBold} title="voltar" />
                     </Link>
@@ -68,12 +69,13 @@ export function Details({ ingredients }) {
                                 <h4>01</h4>
                                 <AiOutlinePlus size={24} />
                                 <Button className="mobileButton" icon={PiReceipt} title="pedir ∙ R$ 25,00" />
-                                <Button className="desktopButton" title="incluir ∙ "/>
+                                <Button className="desktopButton" title="incluir ∙ " />
                             </div>
                         </div>
                     </div>
-                </div>
+                </Content>
             }
+
             <Footer />
         </Container>
     )

@@ -17,7 +17,7 @@ export const Container = styled.div`
     border-radius: 8px;
     margin-bottom: 2.4rem;
     
-    
+
     background-color: ${({theme}) => theme.COLORS.DARK_200};
 
     a {
@@ -106,3 +106,57 @@ export const Container = styled.div`
         }
     }
 `;  
+
+export const UserContent = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+`;
+
+export const AdminContent = styled.div`
+    width: 21.0rem;
+    height: 100%;
+
+    p {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-right: 1.6rem;
+    }
+
+    .Content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        margin-top: 2.5rem;
+
+        h4 {
+            margin-top: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+        }
+        
+
+        @media (min-width: 1024px) {
+            margin-top: 2rem;
+
+            h4 {
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+                font-size: 2.4rem;
+            }
+
+            span {
+                margin-top: 1.5rem;
+            }
+        }
+    }
+
+    @media (min-width: 1024px) {
+            width: 30.4rem;
+            height: 46.2rem;
+        }
+
+`;

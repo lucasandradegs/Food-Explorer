@@ -5,7 +5,7 @@ import { Home } from "../pages/Home"
 import { DeviceMenu } from "../pages/DeviceMenu"
 
 
-export function AppRoutes() {
+export function AdminRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Home />}/>

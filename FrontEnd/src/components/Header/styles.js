@@ -24,8 +24,8 @@ export const Container = styled.header`
             display: none;
         }
     }
-    
-    `;
+
+`;
 
 export const Left = styled.div`
     margin-top: 0.8rem;
@@ -85,7 +85,7 @@ export const Right = styled.div`
     p {
 
         position: absolute;
-        top: 53px;
+        top: 48px;
         right: 27px;
 
         font-weight: 100;
@@ -101,7 +101,7 @@ export const Right = styled.div`
         align-items: center;
         justify-content: center;
 
-        top: 55px;
+        top: 50px;
         right: 22px;
 
         position: absolute;
@@ -140,3 +140,18 @@ export const Right = styled.div`
 
     }
 `;
+
+export const AdminContent = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    span:nth-child(4) {
+        font-size: 1.2rem;
+        margin-top: 0.3rem;
+        color: ${({theme}) => theme.COLORS.CAKE_200};
+    }
+`;
+
+export const UserContent = styled.div``;

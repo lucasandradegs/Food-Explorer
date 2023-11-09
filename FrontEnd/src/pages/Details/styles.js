@@ -1,12 +1,23 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+    /* display: grid; */
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    grid-template-rows: 10.5rem auto 14.7rem;
+    grid-template-areas: 
+    "header"
+    "content"
+    "footer";
 
-    .Content {
-        padding: 0 5.3rem;
+`   
+
+export const Content = styled.main`
+        padding: 0 5.3rem 12rem;
 
         @media (min-width:1024px) {
-            padding: 0 12rem;
+            padding: 4rem 12rem 16rem;
         }
 
         button:nth-child(1) {
@@ -22,7 +33,7 @@ export const Container = styled.div`
                 height: 3.2rem;
             }
         }
-    }
+
 
     .TitleSection {
         display: flex;
