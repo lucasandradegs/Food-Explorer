@@ -164,3 +164,34 @@ export const Content = styled.main`
         
     }
 `;
+
+export const UserContent = styled.div`
+
+`;
+
+
+export const AdminContent = styled.div`
+
+    .Details {
+        margin-top: 1rem;
+
+        button {
+            width: 30.6rem;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+
+        .Details {
+            margin-top: 4.8rem;
+
+            button {
+                margin-left: 0;
+                width: 13.1rem;
+            }
+        }
+    }
+
+`;

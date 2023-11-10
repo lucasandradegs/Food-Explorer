@@ -65,6 +65,7 @@ export function Header({ children }) {
                         <div className="leftSideDesktop">
                             <img src="/src/assets/explorer.svg" alt="" />
                             <h2>food explorer</h2>
+                            <span>admin</span>
                         </div>
 
                     </Left>
@@ -75,10 +76,27 @@ export function Header({ children }) {
                         </div>
 
                         <img src="/src/assets/explorer.svg" alt="" />
-                        <h2>food explorer</h2>
 
-                        <span>admin</span>
+                        <div className="foodExplorerTitle">
+                            <h2>food explorer</h2>
+                            <span>admin</span>
+                        </div>
                     </Middle>
+
+                    <Right>
+                        <span id="receiptSVG"><PiReceipt size={26} /></span>
+                        <label htmlFor="npedidos">
+                            <input
+                                id="npedidos"
+                            />
+                        </label>
+                        <p>0</p>
+
+                        <div className="rightSideDesktop">
+                            <Button title="Novo prato" />
+                            <span><GoSignOut size={22} onClick={signOut} /></span>
+                        </div>
+                    </Right>
                 </AdminContent>
             }
         </Container>

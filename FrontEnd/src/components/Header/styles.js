@@ -31,7 +31,7 @@ export const Left = styled.div`
     margin-top: 0.8rem;
 
     a {
-        color: ${({theme}) => theme.COLORS.LIGHT_300};
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
     }
 
     @media (min-width: 1024px) {
@@ -46,7 +46,7 @@ export const Left = styled.div`
             }
         }
 
-        span {
+        span:nth-child(1) {
             display: none;
         }
     }
@@ -147,10 +147,45 @@ export const AdminContent = styled.div`
     align-items: center;
     width: 100%;
 
-    span:nth-child(4) {
-        font-size: 1.2rem;
-        margin-top: 0.3rem;
-        color: ${({theme}) => theme.COLORS.CAKE_200};
+    
+    .foodExplorerTitle { 
+        display: flex;
+        gap: .8rem;
+        align-items: center;
+
+        span {
+            font-size: 1.2rem;
+            margin-top: 0.3rem;
+            color: ${({ theme }) => theme.COLORS.CAKE_200};
+        }
+
+        @media (min-width: 1024px) {
+            display: none;
+        }
+    }
+
+    .leftSideDesktop {
+        span {
+            position: absolute;
+            top: 7rem;
+            left: 27rem;
+            color: ${({ theme }) => theme.COLORS.CAKE_200};
+        }
+    }
+
+    @media (max-width: 1023px) {
+
+        label, p {
+            display: none;
+        }
+
+        #receiptSVG {
+            display: none;
+        }
+
+        .rightSideDesktop {
+            display: none;
+        }
     }
 `;
 

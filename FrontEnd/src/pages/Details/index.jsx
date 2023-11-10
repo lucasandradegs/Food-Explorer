@@ -1,6 +1,6 @@
 import { ButtonText } from "../../components/ButtonText";
 import { Header } from "../../components/Header";
-import { Container, Content } from "./styles";
+import { Container, Content, UserContent, AdminContent } from "./styles";
 import { PiCaretLeftBold } from "react-icons/pi";
 import { AiOutlineMinus } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -13,6 +13,7 @@ import { InputHeader } from "../../components/InputHeader";
 import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 import { useEffect, useState } from "react";
+import { USER_ROLE } from "../../utils/roles";
 
 
 export function Details({ ingredients }) {
@@ -43,38 +44,73 @@ export function Details({ ingredients }) {
             {
                 data &&
                 <Content>
-
-                    <Link to="/">
-                        <ButtonText icon={PiCaretLeftBold} title="voltar" />
-                    </Link>
-                    <div className="TitleSection">
-                        <img src={imageURL} alt="" />
-                        <div className="TileDesktop">
-                            <h2>{data.name}</h2>
-                            <p>{data.description}</p>
-                            <div className="IngredientsSection">
-                                <div className="Ingredients">
-                                    {
-                                        data.ingredients.map(title => (
-                                            <span
-                                                key={String(title.id)}
-                                                ingredient={title.ingredient}
-                                            >{title.ingredient}</span>
-                                        ))
-                                    }
+                    {[USER_ROLE.CUSTOMER].includes(user.role) &&
+                        <UserContent>
+                            <Link to="/">
+                                <ButtonText icon={PiCaretLeftBold} title="voltar" />
+                            </Link>
+                            <div className="TitleSection">
+                                <img src={imageURL} alt="" />
+                                <div className="TileDesktop">
+                                    <h2>{data.name}</h2>
+                                    <p>{data.description}</p>
+                                    <div className="IngredientsSection">
+                                        <div className="Ingredients">
+                                            {
+                                                data.ingredients.map(title => (
+                                                    <span
+                                                        key={String(title.id)}
+                                                        ingredient={title.ingredient}
+                                                    >{title.ingredient}</span>
+                                                ))
+                                            }
+                                        </div>
+                                    </div>
+                                    <div className="Details">
+                                        <AiOutlineMinus size={24} />
+                                        <h4>01</h4>
+                                        <AiOutlinePlus size={24} />
+                                        <Button className="mobileButton" icon={PiReceipt} title="pedir ∙ R$ 25,00" />
+                                        <Button className="desktopButton" title="incluir ∙ " />
+                                    </div>
                                 </div>
                             </div>
-                            <div className="Details">
-                                <AiOutlineMinus size={24} />
-                                <h4>01</h4>
-                                <AiOutlinePlus size={24} />
-                                <Button className="mobileButton" icon={PiReceipt} title="pedir ∙ R$ 25,00" />
-                                <Button className="desktopButton" title="incluir ∙ " />
+                        </UserContent>
+                    }
+
+                    {[USER_ROLE.ADMIN].includes(user.role) &&
+                        <AdminContent>
+                            <Link to="/">
+                                <ButtonText icon={PiCaretLeftBold} title="voltar" />
+                            </Link>
+                            <div className="TitleSection">
+                                <img src={imageURL} alt="" />
+                                <div className="TileDesktop">
+                                    <h2>{data.name}</h2>
+                                    <p>{data.description}</p>
+                                    <div className="IngredientsSection">
+                                        <div className="Ingredients">
+                                            {
+                                                data.ingredients.map(title => (
+                                                    <span
+                                                        key={String(title.id)}
+                                                        ingredient={title.ingredient}
+                                                    >{title.ingredient}</span>
+                                                ))
+                                            }
+                                        </div>
+                                    </div>
+                                    <div className="Details">
+                                        <Button className="mobileButton" title="Editar prato" />
+                                        <Button className="desktopButton" title="Editar prato" />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </AdminContent>
+                    }
                 </Content>
             }
+
 
             <Footer />
         </Container>
