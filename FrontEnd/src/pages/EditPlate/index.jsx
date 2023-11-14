@@ -3,19 +3,18 @@ import { Container, Content } from "./styles";
 import { InputHeader } from "../../components/InputHeader";
 import { FiSearch, FiUpload } from "react-icons/fi";
 import { ButtonText } from "../../components/ButtonText";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { PiCaretLeftBold } from "react-icons/pi";
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Button";
 import { AiOutlineUpload } from "react-icons/ai"
 import { Input } from "../../components/Input";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { api } from "../../services/api";
 import { ToastContainer, toast } from 'react-toastify'
 import { IngredientPlate } from "../../components/IngredientPlate";
 
-export function NewPlate() {
-    const [imagePreview, setImagePreview] = useState(null)
+export function EditPlate() {
     const [imageFile, setImageFile] = useState(null);
     const [name, setName] = useState("")
     const [category, setCategory] = useState("")
@@ -24,16 +23,17 @@ export function NewPlate() {
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState("")
 
+    const params = useParams();
     const navigate = useNavigate();
     const inputRef = useRef()
 
-    async function handleNewPlate() {
+    async function handleEditPlate() {
 
-        // if (!image) {
-        //     return toast.error('Você precisa enviar a imagem do prato!', {
-        //         theme: "colored"
-        //     })
-        // }
+        if (!imageFile) {
+            return toast.error('Você precisa enviar a imagem do prato!', {
+                theme: "colored"
+            })
+        }
 
         if (!name) {
             return toast.error('Você precisa informar o nome do prato!', {
@@ -65,20 +65,15 @@ export function NewPlate() {
             })
         }
 
+        api.put(`/plates/${params.id}`, { name, category, ingredients, price, description })
+
         const formData = new FormData();
+
         formData.append("image", imageFile)
-        formData.append("name", name)
-        formData.append("description", description)
-        formData.append("category", category)
-        formData.append("price", price)
 
-        ingredients.map(ingredient => (
-            formData.append("ingredients", ingredient)
-        ))
+        api.patch(`/plates/${params.id}`, formData)
 
-        api.post("/plates", formData)
-
-        toast.success('Prato criado com sucesso!')
+        toast.success('Prato modificado com sucesso!')
         navigate("/")
     }
 
@@ -103,6 +98,22 @@ export function NewPlate() {
         inputRef.current.click()
     }
 
+    useEffect(() => {
+        async function fetchPlate() {
+            const response = await api.get(`/plates/${params.id}`)
+
+            const { name, category, ingredients, price, description, imageFile } = response.data
+            setName(name)
+            setCategory(category)
+            setIngredients(ingredients.map(ingredient => ingredient.ingredient))
+            setPrice(price)
+            setDescription(description)
+            setImageFile(imageFile)
+        }
+
+        fetchPlate()
+    }, [])
+
 
     return (
         <Container>
@@ -115,7 +126,7 @@ export function NewPlate() {
                 </Link>
                 <ToastContainer />
                 <div className="newPlateSection">
-                    <h2>Novo prato</h2>
+                    <h2>Editar prato</h2>
                     {/* {imagePreview && (
                         <div className="Preview">
                             <h4>Preview da Imagem</h4>
@@ -136,11 +147,12 @@ export function NewPlate() {
                     <h4>Nome</h4>
                     <Input
                         placeholder="Ex: Bolo de Cenoura"
+                        value={name}
                         onChange={e => setName(e.target.value)}
                     />
 
                     <h4>Categoria</h4>
-                    <select onChange={e => setCategory(e.target.value)}>
+                    <select value={category} onChange={e => setCategory(e.target.value)}>
                         <option value="">Selecione uma opção</option>
                         <option value="Refeições">Refeições</option>
                         <option value="Sobremesas">Sobremesas</option>
@@ -172,16 +184,18 @@ export function NewPlate() {
                     <h4>Preço</h4>
                     <Input
                         placeholder="R$ 00,00"
+                        value={price}
                         onChange={e => setPrice(e.target.value)}
                     />
 
                     <h4>Descrição</h4>
                     <textarea
                         placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+                        value={description}
                         onChange={e => setDescription(e.target.value)}
                     />
 
-                    <Button colored title="Salvar alterações" onClick={handleNewPlate} />
+                    <Button colored title="Salvar alterações" onClick={handleEditPlate}/>
                 </div>
 
                 <h2>Adicionar prato</h2>
@@ -261,7 +275,7 @@ export function NewPlate() {
                     </div>
                 </div>
                 <div className="saveButton">
-                    <Button colored title="Salvar alterações" onClick={handleNewPlate} />
+                    <Button colored title="Salvar alterações" />
                 </div>
             </Content>
 

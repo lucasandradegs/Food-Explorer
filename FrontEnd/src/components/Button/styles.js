@@ -14,7 +14,7 @@ export const Container = styled.button`
 
     font-weight: 100;
     
-    background-color: ${({theme}) => theme.COLORS.TOMATO_100};
+    background-color: ${({theme, $colored}) => $colored ? theme.COLORS.TOMATO_400 : theme.COLORS.TOMATO_100};
     color: ${({theme}) => theme.COLORS.LIGHT_100};
 
     &:disabled {

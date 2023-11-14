@@ -8,6 +8,7 @@ export default {
         DARK_1000: "#192227",
         
         TOMATO_100: "#750310",
+        TOMATO_400: "#AB4D55",
         CAKE_200: "#82F3FF",
         
         LIGHT_100: "#FFFFFF",

@@ -32,10 +32,10 @@ class PlatesController {
     }
 
     async update(req, res) {
-        const { image, name, price, description } = req.body
+        const { image, name, category, price, description, ingredients } = req.body
         const { id } = req.params
 
-        const plate = await knex("plates").where({ id }).first()
+        const plate = await knex("plates").where({ id }).first();
 
         if (!plate) {
             throw new AppError(`Prato não encontrado no sistema.`)
@@ -43,14 +43,27 @@ class PlatesController {
 
         plate.image = image ?? plate.image
         plate.name = name ?? plate.name
+        plate.category = category ?? plate.category
         plate.price = price ?? plate.price
         plate.description = description ?? plate.description
 
-        await knex("plates").update({ image, name, price, description }).where({ id })
+        await knex("plates").update({ image, name, price, description, category }).where({ id })
+
+        const insertIntoIngredients = ingredients.map(ingredient => {
+            return {
+                plate_id: plate.id,
+                ingredient
+            }
+        })
+        
+        await knex("ingredients").insert(insertIntoIngredients)
+
+        await knex("ingredients").where({ plate_id: id }).delete()
+
 
         return res.status(201).json(`Prato atualizado com sucesso!`)
-    }
 
+    }
     async show(req, res) {
         const { id } = req.params
 
@@ -92,9 +105,9 @@ class PlatesController {
                 "plates.name",
                 "plates.user_id",
             ])
-            .whereLike("plates.name", `%${name}%`)
-            .whereIn("ingredient", filterIngredients)
-            .innerJoin("plates", "plates.id", "ingredients.plate_id")
+                .whereLike("plates.name", `%${name}%`)
+                .whereIn("ingredient", filterIngredients)
+                .innerJoin("plates", "plates.id", "ingredients.plate_id")
         } else {
 
             plates = await knex("plates").orderBy("name").whereLike("name", `%${name}%`)
