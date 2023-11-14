@@ -19,7 +19,29 @@ export const Content = styled.div`
     flex-direction: column;
     justify-content: space-between;
 
-    overflow-y: auto;
+    overflow-y: hidden;
+
+    .newPlateSection {
+        overflow-y: hidden;
+        animation: main 2.0s;
+
+        @keyframes main {
+            from {
+                transform: translateY(100%);
+            }
+        }
+    }
+
+    .DesktopForm {
+        overflow-y: hidden;
+        animation: main 2.0s;
+
+        @keyframes main {
+            from {
+                transform: translateY(100%);
+            }
+        }
+    }
 
 
 

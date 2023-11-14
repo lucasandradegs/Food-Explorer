@@ -189,4 +189,9 @@ export const AdminContent = styled.div`
     }
 `;
 
-export const UserContent = styled.div``;
+export const UserContent = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+`;

@@ -1,9 +1,6 @@
-import { Button } from "../Button";
 import { Container, Left } from "./styles";
 import { AiOutlineClose } from "react-icons/ai"
-import { FiMenu } from "react-icons/fi";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../hooks/auth";
+import { Link} from "react-router-dom";
 import { ButtonText } from "../ButtonText";
 
 export function HeaderMenu() {
@@ -13,7 +10,6 @@ export function HeaderMenu() {
                 <Link to="/">
                     <ButtonText icon={AiOutlineClose} title="Menu"/>
                 </Link>
-
             </Left>
         </Container>
     )

@@ -113,6 +113,16 @@ export const UserContent = styled.div`
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
+
+    h4 {
+        font-size: 2rem;
+    }
+
+    @media (max-width: 1023px) {
+        h4 {
+            font-size: 1.4rem;
+        }
+    }
 `;
 
 export const AdminContent = styled.div`

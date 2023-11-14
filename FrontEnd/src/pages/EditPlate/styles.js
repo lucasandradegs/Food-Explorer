@@ -19,9 +19,29 @@ export const Content = styled.div`
     flex-direction: column;
     justify-content: space-between;
 
-    overflow-y: auto;
+    overflow-x: hidden;
 
+    .newPlateSection {
+        overflow-x: hidden;
+        animation: main 2.0s;
 
+        @keyframes main {
+            from {
+                transform: translateX(100%);
+            }
+        }
+    }
+
+    .DesktopForm {
+        overflow-x: hidden;
+        animation: main 2.0s;
+
+        @keyframes main {
+            from {
+                transform: translateX(100%);
+            }
+        }
+    }
 
     button:nth-child(1) {
         display: flex;
@@ -94,6 +114,9 @@ export const Content = styled.div`
         padding: 1.4rem;
     }
    
+    input, textarea, select {
+        color: ${({theme}) => theme.COLORS.LIGHT_500};
+    }
 
    .Ingredients {
         margin-top: 2.4rem;
@@ -101,9 +124,37 @@ export const Content = styled.div`
         display: flex;
         padding: 4px 8px 8px;
         gap: 10px;
+        color: ${({theme}) => theme.COLORS.LIGHT_100};
         background-color: ${({theme}) => theme.COLORS.DARK_900};
         border-radius: 10px;
         flex-wrap: wrap;
+
+        input {
+            color: ${({theme}) => theme.COLORS.LIGHT_100};
+        }
+   }
+
+   .DeviceButtons {
+        display: flex;
+        gap: 3.2rem;
+
+        button:nth-child(1) {
+            background-color: ${({theme}) => theme.COLORS.DARK_800};
+            width: 22rem;
+
+            @media (max-width: 425px) {
+                font-size: 12px; 
+            }
+        }
+
+        button {
+            justify-content: center;
+            margin-top: 2.4rem;
+
+            @media (max-width: 388px) {
+                font-size: 14px;
+            }
+        }
    }
 
    @media (max-width: 1023px) {
@@ -131,13 +182,19 @@ export const Content = styled.div`
 
         .saveButton {
             display: flex;
-            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 3.2rem;
+
+            button:nth-child(1) {
+                background-color: ${({theme}) => theme.COLORS.DARK_800};
+                width: 13rem;
+            }
             
             button {
-                display: flex;
                 justify-content: center;
                 width: 17.2rem;
                 font-size: 1.6rem;
+                margin-top: 3.2rem;
             }
         }
 

@@ -10,10 +10,26 @@ import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
 import { PiPencilSimpleBold } from "react-icons/pi"
+import { useState } from "react";
 
 export function Card({ data, ...rest }) {
     const imageURL = `${api.defaults.baseURL}/files/${data.image}`
+    
     const { user } = useAuth()
+
+    const [quantity, setQuantity] = useState(1)
+
+    function handleAddItem() {
+        setQuantity (quantity + 1)
+    }
+
+    function handleRemoveItem() {
+        setQuantity (quantity - 1)
+
+        if (quantity == 1 ) {
+            setQuantity(1)
+        }
+    }
 
     return (
         <Container {...rest}>
@@ -27,9 +43,9 @@ export function Card({ data, ...rest }) {
                     <span>R$ {data.price}</span>
                     <div className="QuantitySection">
                         <div className="MinusAndPlusButton">
-                            <AiOutlineMinus size={24} cursor="pointer" />
-                            <h4>01</h4>
-                            <AiOutlinePlus size={24} cursor="pointer" />
+                            <AiOutlineMinus size={24} cursor="pointer" onClick={handleRemoveItem}/>
+                            <h4>{quantity < 10 ? `0${quantity}` : quantity}</h4>
+                            <AiOutlinePlus size={24} cursor="pointer" onClick={handleAddItem}/>
                         </div>
                         <Button title="incluir" />
                     </div>

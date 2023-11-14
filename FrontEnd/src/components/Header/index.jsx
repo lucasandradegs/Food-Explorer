@@ -3,12 +3,19 @@ import { Container, UserContent, AdminContent, Left, Middle, Right } from "./sty
 import { PiReceipt } from 'react-icons/pi'
 import { GoSignOut } from 'react-icons/go'
 import { FiMenu } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
 
 export function Header({ children }) {
     const { user, signOut } = useAuth()
+
+    const navigate = useNavigate();
+
+    function handleSignOut() {
+        navigate("/")
+        signOut()
+    }
 
     return (
 
@@ -49,7 +56,7 @@ export function Header({ children }) {
 
                         <div className="rightSideDesktop">
                             <Button icon={PiReceipt} title="Pedidos (0)" />
-                            <span><GoSignOut size={22} onClick={signOut} /></span>
+                            <span><GoSignOut size={22} onClick={handleSignOut} /></span>
                         </div>
                     </Right>
                 </UserContent>
@@ -96,7 +103,7 @@ export function Header({ children }) {
                             <Link to={`/new`}>
                                 <Button title="Novo prato" />
                             </Link>
-                            <span><GoSignOut size={22} onClick={signOut} /></span>
+                            <span><GoSignOut size={22} onClick={handleSignOut} cursor="pointer"/></span>
                         </div>
                     </Right>
                 </AdminContent>

@@ -32,38 +32,41 @@ class PlatesController {
     }
 
     async update(req, res) {
-        const { image, name, category, price, description, ingredients } = req.body
-        const { id } = req.params
-
+        const { image, name, category, price, description, ingredients } = req.body;
+        const { id } = req.params;
+    
         const plate = await knex("plates").where({ id }).first();
-
+    
         if (!plate) {
-            throw new AppError(`Prato não encontrado no sistema.`)
+          throw new AppError(`Prato não encontrado no sistema.`);
         }
-
-        plate.image = image ?? plate.image
-        plate.name = name ?? plate.name
-        plate.category = category ?? plate.category
-        plate.price = price ?? plate.price
-        plate.description = description ?? plate.description
-
-        await knex("plates").update({ image, name, price, description, category }).where({ id })
-
-        const insertIntoIngredients = ingredients.map(ingredient => {
+    
+        plate.image = image ?? plate.image;
+        plate.name = name ?? plate.name;
+        plate.category = category ?? plate.category;
+        plate.price = price ?? plate.price;
+        plate.description = description ?? plate.description;
+    
+        await knex("plates")
+          .update({ image, name, price, description, category })
+          .where({ id });
+    
+        if (ingredients) {
+          await knex("ingredients").where({ plate_id: plate.id }).del();
+    
+          const insertIntoIngredients = ingredients.map((ingredient) => {
             return {
-                plate_id: plate.id,
-                ingredient
-            }
-        })
-        
-        await knex("ingredients").insert(insertIntoIngredients)
-
-        await knex("ingredients").where({ plate_id: id }).delete()
-
-
-        return res.status(201).json(`Prato atualizado com sucesso!`)
-
-    }
+              plate_id: plate.id,
+              ingredient,
+            };
+          });
+    
+          await knex("ingredients").insert(insertIntoIngredients);
+        }
+    
+        return res.status(201).json(`Prato atualizado com sucesso!`);
+      }
+      
     async show(req, res) {
         const { id } = req.params
 

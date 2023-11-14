@@ -11,6 +11,8 @@ export const Container = styled.div`
     "content"
     "footer";
 
+    overflow-x: hidden;
+
 `   
 
 export const Content = styled.main`
@@ -166,11 +168,30 @@ export const Content = styled.main`
 `;
 
 export const UserContent = styled.div`
+    animation: main 1.4s;
 
+    @keyframes main {
+        from {
+            transform: translateX(100%);
+        }
+    }
+
+    .Details {
+        button {
+            font-size: 1.2rem;
+        }
+    }
 `;
 
 
 export const AdminContent = styled.div`
+        animation: main 1.4s;
+
+        @keyframes main {
+            from {
+                transform: translateX(100%);
+            }
+        }
 
     .Details {
         margin-top: 1rem;

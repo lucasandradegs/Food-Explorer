@@ -22,6 +22,12 @@ export function SignUp() {
             })
         }
 
+        if (password.length < 6) {
+            return toast.error(`A senha deve conter no mínimo 6 caracteres!`, {
+                theme: "colored"
+            })
+        }
+
         api.post("/users", {name, email, password}).then(() => {
             toast.success(`O usuário ${name} foi cadastrado com sucesso!`, {
                 theme: "colored"

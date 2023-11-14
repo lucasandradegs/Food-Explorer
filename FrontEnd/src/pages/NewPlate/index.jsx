@@ -13,6 +13,7 @@ import { useRef, useState } from "react";
 import { api } from "../../services/api";
 import { ToastContainer, toast } from 'react-toastify'
 import { IngredientPlate } from "../../components/IngredientPlate";
+import { useAuth } from "../../hooks/auth";
 
 export function NewPlate() {
     const [imagePreview, setImagePreview] = useState(null)
@@ -29,11 +30,11 @@ export function NewPlate() {
 
     async function handleNewPlate() {
 
-        // if (!image) {
-        //     return toast.error('Você precisa enviar a imagem do prato!', {
-        //         theme: "colored"
-        //     })
-        // }
+        if (!imageFile) {
+            return toast.error('Você precisa enviar a imagem do prato!', {
+                theme: "colored"
+            })
+        }
 
         if (!name) {
             return toast.error('Você precisa informar o nome do prato!', {
@@ -65,21 +66,42 @@ export function NewPlate() {
             })
         }
 
-        const formData = new FormData();
-        formData.append("image", imageFile)
-        formData.append("name", name)
-        formData.append("description", description)
-        formData.append("category", category)
-        formData.append("price", price)
+        try {
+            const priceRegex = /^\d{1,3},\d{2}$/;
 
-        ingredients.map(ingredient => (
-            formData.append("ingredients", ingredient)
-        ))
+            if (!priceRegex.test(price)) {
+				return toast.error("Digite o preço num formato válido. Ex: 12,99", {
+                    theme: "colored"
+                });
+			};
 
-        api.post("/plates", formData)
+            const formattedPrice = parseFloat(price.replace(",", "."));
 
-        toast.success('Prato criado com sucesso!')
-        navigate("/")
+            const formData = new FormData();
+            formData.append("image", imageFile)
+            formData.append("name", name)
+            formData.append("description", description)
+            formData.append("category", category)
+            formData.append("price", formattedPrice)
+
+            ingredients.map(ingredient => (
+                formData.append("ingredients", ingredient)
+            ))
+
+            await api.post("/plates", formData)
+            toast.success('Prato criado com sucesso!',  {
+                theme: "colored"
+            })
+
+            setTimeout(() => {
+                navigate("/")
+            }, 4000)
+
+        } catch (error) {
+            console.error(error)
+            return toast.error(`Não foi possivel criar o prato`)
+        }
+    
     }
 
     function handleAddIngredient() {

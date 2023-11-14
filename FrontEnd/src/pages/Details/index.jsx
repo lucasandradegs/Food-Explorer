@@ -24,6 +24,19 @@ export function Details({ ingredients }) {
 
     const imageURL = data && `${api.defaults.baseURL}/files/${data.image}`
 
+    const [quantity, setQuantity] = useState(1)
+
+    function handleAddItem() {
+        setQuantity (quantity + 1)
+    }
+
+    function handleRemoveItem() {
+        setQuantity (quantity - 1)
+
+        if (quantity == 1 ) {
+            setQuantity(1)
+        }
+    }
 
     useEffect(() => {
         async function fetchPlates() {
@@ -31,7 +44,9 @@ export function Details({ ingredients }) {
             setData(response.data)
         }
 
-        fetchPlates()
+        setTimeout(() => {
+            fetchPlates();
+        }, 500)
     }, [])
 
 
@@ -67,11 +82,11 @@ export function Details({ ingredients }) {
                                         </div>
                                     </div>
                                     <div className="Details">
-                                        <AiOutlineMinus size={24} />
-                                        <h4>01</h4>
-                                        <AiOutlinePlus size={24} />
-                                        <Button className="mobileButton" icon={PiReceipt} title="pedir ∙ R$ 25,00" />
-                                        <Button className="desktopButton" title="incluir ∙ " />
+                                        <AiOutlineMinus size={24} onClick={handleRemoveItem} cursor="pointer"/>
+                                        <h4>{quantity < 10 ? `0${quantity}` : quantity}</h4>
+                                        <AiOutlinePlus size={24} onClick={handleAddItem} cursor="pointer"/>
+                                        <Button className="mobileButton" icon={PiReceipt} title={`pedir ∙ R$ ${data.price * quantity}`} />
+                                        <Button className="desktopButton" title={`incluir ∙ ${data.price * quantity}`} />
                                     </div>
                                 </div>
                             </div>
@@ -101,8 +116,10 @@ export function Details({ ingredients }) {
                                         </div>
                                     </div>
                                     <div className="Details">
-                                        <Button className="mobileButton" title="Editar prato" />
-                                        <Button className="desktopButton" title="Editar prato" />
+                                        <Link to={`/edit/${data.id}`}>
+                                            <Button className="mobileButton" title="Editar prato" />
+                                            <Button className="desktopButton" title="Editar prato" />
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

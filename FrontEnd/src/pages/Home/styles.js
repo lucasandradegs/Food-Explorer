@@ -16,7 +16,7 @@ export const Container = styled.div`
 
     > main {
         grid-area: content;
-        overflow-y: auto;
+        overflow-y: hidden;
         ::-webkit-scrollbar {
         display: none;
         }
@@ -25,9 +25,20 @@ export const Container = styled.div`
 `
 
 export const UserContent = styled.main`
+
     padding: 0 2.4rem;
     margin-top: 4.4rem;
 
+    .Transition {
+        overflow-y: hidden;
+        animation: main 2.0s;
+
+        @keyframes main {
+            from {
+                transform: translateY(100%);
+            }
+        }
+    }
 
     @media (max-width: 1023px) {
         .bannerDesktop {
@@ -171,6 +182,17 @@ export const UserContent = styled.main`
 export const AdminContent = styled.main`
     padding: 0 2.4rem;
     margin-top: 4.4rem;
+
+    .Transition {
+        overflow-y: hidden;
+        animation: main 2.0s;
+
+        @keyframes main {
+            from {
+                transform: translateY(100%);
+            }
+        }
+    }
 
 
     @media (max-width: 1023px) {

@@ -26,140 +26,146 @@ export function Home() {
             setPlates(response.data);
         }
 
-        fetchPlates();
+        setTimeout(() => {
+            fetchPlates();
+        }, 500)
+
     }, [search])
 
     return (
         <Container>
             <Header >
-                <InputHeader icon={FiSearch} placeholder="Busque por pratos ou ingredientes" onChange={(e) => setSearch(e.target.value)}/>
+                <InputHeader icon={FiSearch} placeholder="Busque por pratos ou ingredientes" onChange={(e) => setSearch(e.target.value)} />
             </ Header>
 
             <main>
                 {[USER_ROLE.CUSTOMER].includes(user.role) &&
-                <UserContent>
+                    <UserContent>
 
-                    <section className="BannerImg">
-                        <img className="bannerMobile" src="./src/assets/bannerMobile.svg" alt="" />
-                        <img className="bannerDesktop" src="./src/assets/banner.svg" alt="" />
+                        <section className="BannerImg">
+                            <img className="bannerMobile" src="./src/assets/bannerMobile.svg" alt="" />
+                            <img className="bannerDesktop" src="./src/assets/banner.svg" alt="" />
 
-                        <div className="mobileTitle">
-                            <h2>Food-Explorer</h2>
-                        </div>
-
-                        <div className="desktopTitle">
-                            <div>
-                                <h2>Sabores inigualáveis</h2>
-                                <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
+                            <div className="mobileTitle">
+                                <h2>Food-Explorer</h2>
                             </div>
+
+                            <div className="desktopTitle">
+                                <div>
+                                    <h2>Sabores inigualáveis</h2>
+                                    <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
+                                </div>
+                            </div>
+                        </section>
+                        <div className="Transition">
+                            {
+                                plates.filter(plate => plate.category == "teste").length > 0 &&
+                                <Section title="Refeições">
+                                    {
+                                        plates.filter(plate => plate.category == "teste").map(plate => (
+                                            <Card
+                                                key={String(plate.id)}
+                                                data={plate}
+                                            />
+                                        ))
+                                    }
+                                </Section>
+                            }
+
+                            {
+                                plates.filter(plate => plate.category == "Refeições").length > 0 &&
+                                <Section title="Pratos Principais">
+                                    {
+                                        plates.filter(plate => plate.category == "Refeições").map(plate => (
+                                            <Card
+                                                key={String(plate.id)}
+                                                data={plate}
+                                            />
+                                        ))
+                                    }
+                                </Section>
+                            }
+
+                            {
+                                plates.filter(plate => plate.category == "teste").length > 0 &&
+                                <Section title="Pratos Principais">
+                                    {
+                                        plates.filter(plate => plate.category == "teste").map(plate => (
+                                            <Card
+                                                key={String(plate.id)}
+                                                data={plate}
+                                            />
+                                        ))
+                                    }
+                                </Section>
+                            }
                         </div>
-                    </section>
 
-                    {
-                        plates.filter(plate => plate.category == "teste").length > 0 &&
-                        <Section title="Refeições">
-                            {
-                                plates.filter(plate => plate.category == "teste").map(plate => (
-                                    <Card
-                                        key={String(plate.id)}
-                                        data={plate}
-                                    />
-                                ))
-                            }
-                        </Section>
-                    }
-
-                    {
-                        plates.filter(plate => plate.category == "Refeições").length > 0 &&
-                        <Section title="Pratos Principais">
-                            {
-                                plates.filter(plate => plate.category == "Refeições").map(plate => (
-                                    <Card
-                                        key={String(plate.id)}
-                                        data={plate}
-                                    />
-                                ))
-                            }
-                        </Section>
-                    }
-
-                    {
-                        plates.filter(plate => plate.category == "teste").length > 0 &&
-                        <Section title="Pratos Principais">
-                            {
-                                plates.filter(plate => plate.category == "teste").map(plate => (
-                                    <Card
-                                        key={String(plate.id)}
-                                        data={plate}
-                                    />
-                                ))
-                            }
-                        </Section>
-                    }
-                </UserContent>
+                    </UserContent>
                 }
 
                 {[USER_ROLE.ADMIN].includes(user.role) &&
-                <AdminContent>
+                    <AdminContent>
 
-                <section className="BannerImg">
-                        <img className="bannerMobile" src="./src/assets/bannerMobile.svg" alt="" />
-                        <img className="bannerDesktop" src="./src/assets/banner.svg" alt="" />
+                        <section className="BannerImg">
+                            <img className="bannerMobile" src="./src/assets/bannerMobile.svg" alt="" />
+                            <img className="bannerDesktop" src="./src/assets/banner.svg" alt="" />
 
-                        <div className="mobileTitle">
-                            <h2>Food-Explorer</h2>
-                        </div>
-
-                        <div className="desktopTitle">
-                            <div>
-                                <h2>Sabores inigualáveis</h2>
-                                <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
+                            <div className="mobileTitle">
+                                <h2>Food-Explorer</h2>
                             </div>
+
+                            <div className="desktopTitle">
+                                <div>
+                                    <h2>Sabores inigualáveis</h2>
+                                    <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
+                                </div>
+                            </div>
+                        </section>
+                        <div className="Transition">
+                            {
+                                plates.filter(plate => plate.category == "teste").length > 0 &&
+                                <Section title="Refeições">
+                                    {
+                                        plates.filter(plate => plate.category == "teste").map(plate => (
+                                            <Card
+                                                key={String(plate.id)}
+                                                data={plate}
+                                            />
+                                        ))
+                                    }
+                                </Section>
+                            }
+
+                            {
+                                plates.filter(plate => plate.category == "Refeições").length > 0 &&
+                                <Section title="Pratos Principais">
+                                    {
+                                        plates.filter(plate => plate.category == "Refeições").map(plate => (
+                                            <Card
+                                                key={String(plate.id)}
+                                                data={plate}
+                                            />
+                                        ))
+                                    }
+                                </Section>
+                            }
+
+                            {
+                                plates.filter(plate => plate.category == "teste").length > 0 &&
+                                <Section title="Pratos Principais">
+                                    {
+                                        plates.filter(plate => plate.category == "teste").map(plate => (
+                                            <Card
+                                                key={String(plate.id)}
+                                                data={plate}
+                                            />
+                                        ))
+                                    }
+                                </Section>
+                            }
                         </div>
-                    </section>
-
-                    {
-                        plates.filter(plate => plate.category == "teste").length > 0 &&
-                        <Section title="Refeições">
-                            {
-                                plates.filter(plate => plate.category == "teste").map(plate => (
-                                    <Card
-                                        key={String(plate.id)}
-                                        data={plate}
-                                    />
-                                ))
-                            }
-                        </Section>
-                    }
-
-                    {
-                        plates.filter(plate => plate.category == "Refeições").length > 0 &&
-                        <Section title="Pratos Principais">
-                            {
-                                plates.filter(plate => plate.category == "Refeições").map(plate => (
-                                    <Card
-                                        key={String(plate.id)}
-                                        data={plate}
-                                    />
-                                ))
-                            }
-                        </Section>
-                    }
-
-                    {
-                        plates.filter(plate => plate.category == "teste").length > 0 &&
-                        <Section title="Pratos Principais">
-                            {
-                                plates.filter(plate => plate.category == "teste").map(plate => (
-                                    <Card
-                                        key={String(plate.id)}
-                                        data={plate}
-                                    />
-                                ))
-                            }
-                        </Section>
-                    }
-                </AdminContent>
+                    </AdminContent>
                 }
             </main>
 

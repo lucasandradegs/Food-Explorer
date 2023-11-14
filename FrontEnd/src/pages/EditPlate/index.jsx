@@ -13,6 +13,8 @@ import { useEffect, useRef, useState } from "react";
 import { api } from "../../services/api";
 import { ToastContainer, toast } from 'react-toastify'
 import { IngredientPlate } from "../../components/IngredientPlate";
+import { ConfirmToast } from 'react-confirm-toast'
+
 
 export function EditPlate() {
     const [imageFile, setImageFile] = useState(null);
@@ -29,11 +31,11 @@ export function EditPlate() {
 
     async function handleEditPlate() {
 
-        if (!imageFile) {
-            return toast.error('Você precisa enviar a imagem do prato!', {
-                theme: "colored"
-            })
-        }
+        // if (!imageFile) {
+        //     return toast.error('Você precisa enviar a imagem do prato!', {
+        //         theme: "colored"
+        //     })
+        // }
 
         if (!name) {
             return toast.error('Você precisa informar o nome do prato!', {
@@ -65,16 +67,54 @@ export function EditPlate() {
             })
         }
 
-        api.put(`/plates/${params.id}`, { name, category, ingredients, price, description })
+        try {
+            let formattedPrice = price.toString().replace(".", ",");
 
-        const formData = new FormData();
+            const priceRegex = /^\d{1,3},\d{2}$/;
+            if (!priceRegex.test(formattedPrice)) {
+                return toast.error("Digite o preço num formato válido. Ex: 12,99", { containerId: "autoClose", theme: "colored" });
+            };
 
-        formData.append("image", imageFile)
+            formattedPrice = parseFloat(formattedPrice.replace(",", "."));
 
-        api.patch(`/plates/${params.id}`, formData)
+            const formData = new FormData();
 
-        toast.success('Prato modificado com sucesso!')
-        navigate("/")
+            if (imageFile) {
+                formData.append("image", imageFile)
+            }
+
+            api.put(`/plates/${params.id}`, { name, category, ingredients, price, description })
+            api.patch(`/plates/${params.id}`, formData)
+
+            toast.success('Prato modificado com sucesso!', {
+                theme: "colored"
+            })
+
+            setTimeout(() => {
+                navigate("/")
+            }, 3000)
+        } catch (error) {
+            console.error(error)
+            return toast.error(`Não foi possivel editar o prato`)
+        }
+    }
+
+    async function handleRemovePlate() {
+        try {
+            await api.delete(`/plates/${params.id}`)
+
+            toast.success(`Prato removido com sucesso!`, {
+                theme: "colored"
+            })
+        
+            setTimeout(() => {
+                navigate("/");
+            }, 3000);
+
+        } catch (error) {
+            console.error(error)
+            return toast.error(`Não foi possivel remover o prato`)
+        }
     }
 
     function handleAddIngredient() {
@@ -194,8 +234,10 @@ export function EditPlate() {
                         value={description}
                         onChange={e => setDescription(e.target.value)}
                     />
-
-                    <Button colored title="Salvar alterações" onClick={handleEditPlate}/>
+                    <div className="DeviceButtons">
+                        <Button title="Excluir prato" onClick={handleRemovePlate}/>
+                        <Button colored title="Salvar alterações" onClick={handleEditPlate} />
+                    </div>
                 </div>
 
                 <h2>Adicionar prato</h2>
@@ -217,13 +259,14 @@ export function EditPlate() {
                         <Input
                             id="Name"
                             placeholder="Ex: Bolo de Cenoura"
+                            value={name}
                             onChange={e => setName(e.target.value)}
                         />
                     </div>
 
                     <div className="plateCategory">
                         <h4>Categoria</h4>
-                        <select id="category" onChange={e => setCategory(e.target.value)}>
+                        <select value={category} id="category" onChange={e => setCategory(e.target.value)}>
                             <option value="">Selecione uma opção</option>
                             <option value="Refeições">Refeições</option>
                             <option value="Sobremesas">Sobremesas</option>
@@ -261,6 +304,7 @@ export function EditPlate() {
                         <h4>Preço</h4>
                         <Input
                             placeholder="R$ 00,00"
+                            value={price}
                             onChange={e => setPrice(e.target.value)}
                         />
                     </div>
@@ -270,12 +314,14 @@ export function EditPlate() {
                         <h4>Descrição</h4>
                         <textarea
                             placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+                            value={description}
                             onChange={e => setDescription(e.target.value)}
                         />
                     </div>
                 </div>
                 <div className="saveButton">
-                    <Button colored title="Salvar alterações" />
+                    <Button title="Excluir prato" onClick={handleRemovePlate}/>
+                    <Button colored title="Salvar alterações" onClick={handleEditPlate}/>
                 </div>
             </Content>
 
