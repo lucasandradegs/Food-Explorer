@@ -21,7 +21,7 @@ export function SignIn() {
             <main className="main">
                 <div className="title">
                     <img src="/src/assets/explorer.svg" alt="" />
-                    <h2>food explorer</h2>
+                    <h2>doce maria</h2>
                 </div>
                 <Form>
                     <div className="form">

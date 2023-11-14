@@ -29,7 +29,7 @@ export function Header({ children }) {
 
                         <div className="leftSideDesktop">
                             <img src="/src/assets/explorer.svg" alt="" />
-                            <h2>food explorer</h2>
+                            <h2>doce maria</h2>
                         </div>
 
                     </Left>
@@ -40,7 +40,7 @@ export function Header({ children }) {
                         </div>
 
                         <img src="/src/assets/explorer.svg" alt="" />
-                        <h2>food explorer</h2>
+                        <h2>doce maria</h2>
 
                     </Middle>
 
@@ -71,7 +71,7 @@ export function Header({ children }) {
 
                         <div className="leftSideDesktop">
                             <img src="/src/assets/explorer.svg" alt="" />
-                            <h2>food explorer</h2>
+                            <h2>doce maria</h2>
                             <span>admin</span>
                         </div>
 

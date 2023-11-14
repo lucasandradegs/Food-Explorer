@@ -47,7 +47,7 @@ export function Home() {
                             <img className="bannerDesktop" src="./src/assets/banner.svg" alt="" />
 
                             <div className="mobileTitle">
-                                <h2>Food-Explorer</h2>
+                                <h2>Doce Maria</h2>
                             </div>
 
                             <div className="desktopTitle">
@@ -112,7 +112,7 @@ export function Home() {
                             <img className="bannerDesktop" src="./src/assets/banner.svg" alt="" />
 
                             <div className="mobileTitle">
-                                <h2>Food-Explorer</h2>
+                                <h2>Doce Maria</h2>
                             </div>
 
                             <div className="desktopTitle">

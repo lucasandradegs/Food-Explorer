@@ -168,7 +168,7 @@ export const AdminContent = styled.div`
         span {
             position: absolute;
             top: 7rem;
-            left: 27rem;
+            left: 25rem;
             color: ${({ theme }) => theme.COLORS.CAKE_200};
         }
     }
