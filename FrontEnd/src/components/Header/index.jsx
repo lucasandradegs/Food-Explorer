@@ -78,7 +78,7 @@ export function Header({ children }) {
                         <img src="/src/assets/explorer.svg" alt="" />
 
                         <div className="foodExplorerTitle">
-                            <h2>food explorer</h2>
+                            <h2>Doce Maria</h2>
                             <span>admin</span>
                         </div>
                     </Middle>

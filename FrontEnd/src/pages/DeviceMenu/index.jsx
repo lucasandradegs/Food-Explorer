@@ -6,6 +6,7 @@ import { Footer } from "../../components/Footer";
 
 import { USER_ROLE } from "../../utils/roles"
 import { useAuth } from "../../hooks/auth";
+import { Link } from "react-router-dom";
 
 export function DeviceMenu() {
     const { user } = useAuth()
@@ -22,7 +23,9 @@ export function DeviceMenu() {
             {[USER_ROLE.ADMIN].includes(user.role) &&
                 <div className="main">
                     <Input icon={FiSearch} placeholder="Busque por pratos ou ingredientes" />
-                    <h2>Novo prato</h2>
+                    <Link to={`/new`}>
+                        <h2>Novo prato</h2>
+                    </Link>
                     <h2>Sair</h2>
                 </div>
             }

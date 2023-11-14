@@ -19,6 +19,10 @@ export const Container = styled.div`
         h2:nth-child(3) {
             margin-top: 1rem;
         }
+
+        a {
+            color: ${({ theme }) => theme.COLORS.LIGHT_300};;
+        }
     }
 
 `;

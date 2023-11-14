@@ -38,7 +38,9 @@ export function Card({ data, ...rest }) {
 
             {[USER_ROLE.ADMIN].includes(user.role) &&
                 <AdminContent>
-                    <p><PiPencilSimpleBold size={24} /></p>
+                    <Link to={`/edit/${data.id}`}>
+                        <p><PiPencilSimpleBold size={24} /></p>
+                    </Link>
                     <div className="Content">
                         <img src={imageURL} alt="" />
                         <Link to={`/details/${data.id}`}>
