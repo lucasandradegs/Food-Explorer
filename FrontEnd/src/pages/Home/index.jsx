@@ -133,10 +133,10 @@ export function Home() {
                     }
 
                     {
-                        plates.filter(plate => plate.category == "Refeição").length > 0 &&
+                        plates.filter(plate => plate.category == "Refeições").length > 0 &&
                         <Section title="Pratos Principais">
                             {
-                                plates.filter(plate => plate.category == "Refeição").map(plate => (
+                                plates.filter(plate => plate.category == "Refeições").map(plate => (
                                     <Card
                                         key={String(plate.id)}
                                         data={plate}

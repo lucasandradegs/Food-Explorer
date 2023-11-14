@@ -3,12 +3,13 @@ const DiskStorage = require("../providers/DiskStorage")
 const AppError = require("../utils/AppError");
 
 class PlatesController {
-    async create(req, res) {
-        const { name, category, ingredients, price, description } = req.body
-        const imageFilename = req.file.filename
+    async create(request, response) {
+        const { name, category, ingredients, price, description } = request.body
 
+        const plateFilename = request.file.filename;
         const diskStorage = new DiskStorage()
-        const filename = await diskStorage.saveFile(imageFilename)
+
+        const filename = await diskStorage.saveFile(plateFilename)
 
         const [plate_id] = await knex("plates").insert({
             image: filename,
@@ -27,7 +28,7 @@ class PlatesController {
 
         await knex("ingredients").insert(insertIntoIngredients)
 
-        return res.status(201).json(`Prato criado com sucesso!`)
+        return response.status(201).json(`Prato criado com sucesso!`)
     }
 
     async update(req, res) {

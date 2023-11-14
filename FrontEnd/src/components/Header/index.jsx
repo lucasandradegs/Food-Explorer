@@ -93,7 +93,9 @@ export function Header({ children }) {
                         <p>0</p>
 
                         <div className="rightSideDesktop">
-                            <Button title="Novo prato" />
+                            <Link to={`/new`}>
+                                <Button title="Novo prato" />
+                            </Link>
                             <span><GoSignOut size={22} onClick={signOut} /></span>
                         </div>
                     </Right>
