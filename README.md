@@ -28,7 +28,7 @@ A página de pagamento está em construção e será implementada em versões fu
 
 Acesso ao Sistema:
 
-Visite https://doce-maria.netlify.app/ para acessar a versão online do Sistema de Controle de Pedidos.
+Visite https://foodexplorer-rocketseatchallenge.netlify.app/ para acessar a versão online do Sistema de Controle de Pedidos.
 
 Por padrão, ao se cadastrar no site, sua conta será definida como cliente padrão.
 
